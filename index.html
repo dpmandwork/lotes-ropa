@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Lotes y fardos de ropa al por mayor por kilos: mujer, hombre, infantil, vintage e invierno. Envío en 48 h.">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style><title>Fardo Lotes de Ropa</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: almacén textil — cabecera de etiqueta, rejilla de fardos apilados, carrito lateral */
+:root{
+  --bg:#EEF0EC; --surface:#FFFFFF; --ink:#151B2B; --muted:#5A6172; --line:#D3D7D0;
+  --accent:#2B44E0; --accent-ink:#FFFFFF; --tag:#FFD23F; --tag-ink:#151B2B; --ok:#1E7A4C;
+  --f-display:"Archivo","Arial Narrow",system-ui,sans-serif;
+  --f-body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  --shadow:0 1px 0 rgba(21,27,43,.06),0 8px 24px -12px rgba(21,27,43,.25);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#10131C; --surface:#181C28; --ink:#E9EBF2; --muted:#9AA1B3; --line:#2A3042;
+  --accent:#7D8CFF; --accent-ink:#0D1020; --tag:#F2C531; --tag-ink:#151B2B; --ok:#5CCB8F;
+  --shadow:0 1px 0 rgba(0,0,0,.3),0 8px 24px -12px rgba(0,0,0,.6); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#10131C; --surface:#181C28; --ink:#E9EBF2; --muted:#9AA1B3; --line:#2A3042;
+  --accent:#7D8CFF; --accent-ink:#0D1020; --tag:#F2C531; --tag-ink:#151B2B; --ok:#5CCB8F;
+  --shadow:0 1px 0 rgba(0,0,0,.3),0 8px 24px -12px rgba(0,0,0,.6); color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.55}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.02}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.label{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+/* Header */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--bg);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:900;font-stretch:120%;font-size:22px;letter-spacing:-.01em}
+.logo-mark{width:30px;height:30px;display:grid;gap:3px;grid-template-rows:repeat(3,1fr)}
+.logo-mark i{display:block;border-radius:2px}
+.logo-mark i:nth-child(1){background:var(--accent)}
+.logo-mark i:nth-child(2){background:var(--tag)}
+.logo-mark i:nth-child(3){background:var(--ink)}
+nav.links{display:flex;gap:22px;font-size:14px}
+nav.links a{color:var(--ink);text-decoration:none}
+nav.links a:hover{color:var(--accent)}
+.cart-btn{display:flex;align-items:center;gap:8px;background:var(--ink);color:var(--bg);border:0;border-radius:999px;padding:9px 16px;font-weight:600;font-size:14px}
+.cart-count{background:var(--tag);color:var(--tag-ink);border-radius:999px;min-width:22px;height:22px;display:inline-grid;place-items:center;font-family:var(--f-mono);font-size:12px;padding:0 6px}
+@media (max-width:760px){nav.links{display:none}}
+
+/* Hero */
+.hero .wrap{display:grid;grid-template-columns:1.25fr 1fr;gap:40px;align-items:center;padding-block:56px 40px}
+.hero h1{font-size:clamp(44px,7vw,92px);font-weight:900;font-stretch:72%;text-transform:uppercase;letter-spacing:-.01em}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p.lead{font-size:18px;color:var(--muted);max-width:52ch;margin:18px 0 26px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn{border:0;border-radius:10px;padding:13px 20px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.btn:hover{filter:brightness(1.08)}
+.facts{display:flex;flex-wrap:wrap;gap:28px;margin-top:34px}
+.facts div strong{display:block;font-family:var(--f-display);font-size:30px;font-weight:800;font-stretch:90%}
+.hero-stack{position:relative;justify-self:center;width:min(100%,360px)}
+.big-bale{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow)}
+.hang-tag{position:absolute;top:-14px;right:-6px;background:var(--tag);color:var(--tag-ink);font-family:var(--f-mono);font-size:12px;font-weight:600;padding:8px 12px 8px 22px;border-radius:4px;transform:rotate(6deg);box-shadow:var(--shadow)}
+.hang-tag::before{content:"";position:absolute;left:8px;top:50%;width:7px;height:7px;margin-top:-3.5px;border-radius:50%;background:var(--bg)}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr;padding-block:36px 28px}.hero-stack{justify-self:start}}
+
+/* Folded-clothes stack */
+.stack{display:flex;flex-direction:column;gap:3px}
+.stack span{display:block;height:14px;border-radius:3px 3px 5px 5px;position:relative}
+.stack span::after{content:"";position:absolute;inset:auto 8% 3px 8%;height:1px;background:rgba(0,0,0,.14)}
+.stack span:nth-child(odd){margin-left:4%;margin-right:2%}
+.stack span:nth-child(3n){margin-left:1%;margin-right:6%}
+.big-bale .stack span{height:22px}
+
+/* Bands */
+section{scroll-margin-top:80px}
+.band{padding-block:56px}
+.band-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px;margin-bottom:24px}
+.band-head h2{font-size:clamp(32px,4.4vw,52px);font-weight:900;font-stretch:78%;text-transform:uppercase}
+
+/* Filters */
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chip{border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:7px 14px;font-size:14px}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.sort{display:flex;gap:8px;align-items:center;font-size:14px}
+.sort select{font:inherit;padding:7px 10px;border-radius:8px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink)}
+.toolbar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-bottom:22px}
+
+/* Grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+.lot{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.lot-top{display:flex;justify-content:space-between;align-items:start;gap:10px}
+.grade{font-family:var(--f-mono);font-size:11px;font-weight:600;letter-spacing:.06em;padding:4px 8px;border-radius:4px;white-space:nowrap}
+.grade-crema{background:var(--tag);color:var(--tag-ink)}
+.grade-a{background:var(--accent);color:var(--accent-ink)}
+.grade-b{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.lot h3{font-size:22px;font-weight:800;font-stretch:88%}
+.lot p{margin:0;color:var(--muted);font-size:14px}
+.specs{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px dashed var(--line);border-bottom:1px dashed var(--line);padding-block:10px}
+.specs div{display:flex;flex-direction:column}
+.specs b{font-family:var(--f-mono);font-size:15px;font-weight:600}
+.lot-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:auto}
+.price{font-family:var(--f-display);font-size:28px;font-weight:800;font-stretch:90%;line-height:1}
+.price small{display:block;font-family:var(--f-mono);font-size:12px;font-weight:400;color:var(--muted);margin-top:4px}
+.add{background:var(--accent);color:var(--accent-ink);border:0;border-radius:10px;padding:10px 14px;font-weight:600;font-size:14px}
+.add.added{background:var(--ok);color:#fff}
+.stock{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.stock.low{color:#C4442A}
+.empty{padding:40px;text-align:center;color:var(--muted);grid-column:1/-1}
+
+/* Process */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.step{border-top:3px solid var(--ink);padding-top:14px}
+.step .n{font-family:var(--f-mono);font-size:12px;color:var(--accent);font-weight:600}
+.step h3{font-size:20px;font-weight:800;font-stretch:88%;margin:6px 0}
+.step p{margin:0;color:var(--muted);font-size:14px}
+@media (max-width:860px){.steps{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.steps{grid-template-columns:1fr}}
+
+/* Grades table */
+.grades{width:100%;border-collapse:collapse;font-size:14px;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.grades th,.grades td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+.grades th{font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.grades tr:last-child td{border-bottom:0}
+.table-scroll{overflow-x:auto}
+
+/* FAQ */
+.faq{display:grid;gap:10px;max-width:780px}
+.faq details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+.faq summary{font-weight:600;cursor:pointer}
+.faq p{margin:10px 0 0;color:var(--muted)}
+
+/* Contact */
+.contact{background:var(--ink);color:var(--bg)}
+.contact .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;padding-block:52px}
+.contact h2{font-size:clamp(30px,4vw,46px);font-weight:900;font-stretch:78%;text-transform:uppercase}
+.contact p{opacity:.8;max-width:50ch}
+.contact-lines{display:grid;gap:12px;align-content:start}
+.cline{display:flex;justify-content:space-between;align-items:center;gap:12px;border:1px solid rgba(127,127,127,.35);border-radius:10px;padding:12px 14px;min-width:0}
+.cline span{overflow-wrap:anywhere}
+.copy{background:transparent;color:inherit;border:1px solid currentColor;border-radius:6px;padding:4px 10px;font-size:12px;font-family:var(--f-mono);flex-shrink:0}
+@media (max-width:760px){.contact .wrap{grid-template-columns:1fr}}
+footer{padding-block:22px;font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+
+/* Cart drawer */
+.scrim{position:fixed;inset:0;background:rgba(10,12,20,.45);z-index:20}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);background:var(--surface);z-index:21;display:flex;flex-direction:column;
+  padding:calc(18px + env(safe-area-inset-top,0px)) max(20px,env(safe-area-inset-right,0px)) calc(18px + env(safe-area-inset-bottom,0px)) 20px;box-shadow:-10px 0 40px rgba(0,0,0,.2)}
+.drawer-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.drawer-head h2{font-size:28px;font-weight:900;font-stretch:80%;text-transform:uppercase}
+.x{background:transparent;border:1px solid var(--line);color:var(--ink);border-radius:8px;width:36px;height:36px;font-size:18px}
+.items{flex:1;overflow:auto;display:flex;flex-direction:column;gap:12px;padding-block:6px}
+.item{display:grid;grid-template-columns:48px 1fr auto;gap:12px;align-items:center;border-bottom:1px solid var(--line);padding-bottom:12px}
+.item .stack span{height:6px}
+.item h4{margin:0;font-size:14px}
+.qty{display:flex;align-items:center;gap:6px;margin-top:4px}
+.qty button{width:26px;height:26px;border-radius:6px;border:1px solid var(--line);background:var(--bg);color:var(--ink);line-height:1}
+.rm{background:none;border:0;color:var(--muted);font-size:12px;text-decoration:underline;padding:0;margin-left:6px}
+.totals{border-top:2px solid var(--ink);padding-top:12px;display:grid;gap:6px;font-size:14px}
+.totals div{display:flex;justify-content:space-between}
+.totals .grand{font-family:var(--f-display);font-size:24px;font-weight:800;font-stretch:90%}
+.ship-note{font-size:12px;color:var(--muted)}
+.ship-bar{height:6px;border-radius:99px;background:var(--line);overflow:hidden}
+.ship-bar i{display:block;height:100%;background:var(--ok)}
+form.checkout{display:grid;gap:10px;margin-top:6px}
+form.checkout label{display:grid;gap:4px;font-size:13px;color:var(--muted)}
+form.checkout input,form.checkout select{font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:8px;padding:9px 10px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.done{text-align:center;padding:30px 6px}
+.done h3{font-size:30px;font-weight:900;font-stretch:80%;text-transform:uppercase;margin-bottom:10px}
+.done .ref{display:inline-block;background:var(--tag);color:var(--tag-ink);font-family:var(--f-mono);padding:6px 12px;border-radius:4px;margin:8px 0 14px}
+
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:10px;font-size:14px;z-index:30}
+@media (prefers-reduced-motion:no-preference){
+  .drawer{animation:slide .22s ease-out}
+  @keyframes slide{from{transform:translateX(30px);opacity:.6}to{transform:none;opacity:1}}
+  .lot{transition:transform .15s,box-shadow .15s}
+  .lot:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+}
+</style>
+</head>
+<body>
+
+
+<header class="top">
+  <div class="wrap">
+    <div class="logo"><span class="logo-mark" aria-hidden="true"><i></i><i></i><i></i></span>FARDO</div>
+    <nav class="links" aria-label="Secciones">
+      <a href="#lotes">Lotes</a><a href="#como">Cómo funciona</a><a href="#calidades">Calidades</a><a href="#faq">Preguntas</a><a href="#contacto">Contacto</a>
+    </nav>
+    <button class="cart-btn" id="openCart" type="button" aria-label="Abrir carrito">Carrito <span class="cart-count" id="cartCount">0</span></button>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="label">Venta al por mayor · Envíos a toda España</div>
+      <h1>Lotes de ropa<br>por <em>kilos</em>, listos para revender</h1>
+      <p class="lead">Fardos seleccionados y clasificados a mano en nuestro almacén. Sabes el peso, el número de prendas y la calidad antes de comprar. Ideal para tiendas de segunda mano, mercadillos y vendedores online.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#lotes">Ver lotes disponibles</a>
+        <a class="btn btn-ghost" href="#calidades">Qué significa cada calidad</a>
+      </div>
+      <div class="facts">
+        <div><strong class="mono">+1.200</strong><span class="label">fardos enviados</span></div>
+        <div><strong class="mono">48 h</strong><span class="label">entrega península</span></div>
+        <div><strong class="mono">0 €</strong><span class="label">envío desde 300 €</span></div>
+      </div>
+    </div>
+    <div class="hero-stack" aria-hidden="true">
+      <div class="hang-tag">LOTE 0412 · 25 KG</div>
+      <div class="big-bale"><div class="stack" id="heroStack"></div>
+        <div style="display:flex;justify-content:space-between;margin-top:14px" class="label"><span>Mix temporada</span><span class="mono">≈ 95 prendas</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="lotes">
+  <div class="wrap">
+    <div class="band-head">
+      <h2>Lotes disponibles</h2>
+      <span class="label" id="resultCount"></span>
+    </div>
+    <div class="toolbar">
+      <div class="filters" id="filters" role="group" aria-label="Filtrar por categoría"></div>
+      <div class="sort"><label for="sortSel" class="label">Ordenar</label>
+        <select id="sortSel">
+          <option value="dest">Destacados</option>
+          <option value="precio-asc">Precio: menor a mayor</option>
+          <option value="precio-desc">Precio: mayor a menor</option>
+          <option value="prenda">€ por prenda más bajo</option>
+          <option value="kg">Más kilos</option>
+        </select></div>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section class="band" id="como" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="band-head"><h2>Cómo funciona</h2></div>
+    <div class="steps">
+      <div class="step"><span class="n">PASO 1</span><h3>Elige tu lote</h3><p>Filtra por categoría y compara precio por kilo y por prenda.</p></div>
+      <div class="step"><span class="n">PASO 2</span><h3>Haz el pedido</h3><p>Añade los fardos al carrito y confirma tus datos de envío.</p></div>
+      <div class="step"><span class="n">PASO 3</span><h3>Lo preparamos</h3><p>Pesamos y precintamos el fardo. Te enviamos foto antes de salir.</p></div>
+      <div class="step"><span class="n">PASO 4</span><h3>Recíbelo en 48 h</h3><p>Entrega en península con seguimiento. Baleares y Canarias, 3 a 5 días.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="calidades" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="band-head"><h2>Calidades</h2><span class="label">Clasificación de almacén</span></div>
+    <div class="table-scroll">
+    <table class="grades">
+      <thead><tr><th>Calidad</th><th>Estado de las prendas</th><th>Para quién</th></tr></thead>
+      <tbody>
+        <tr><td><span class="grade grade-crema">CREMA</span></td><td>Como nuevas o con etiqueta. Sin manchas, roturas ni desgaste visible.</td><td>Tiendas de segunda mano y venta online con precio alto.</td></tr>
+        <tr><td><span class="grade grade-a">CALIDAD A</span></td><td>Muy buen estado, uso ligero. Pueden tener algún bolo o lavado leve.</td><td>Mercadillos, tiendas y Vinted o Wallapop.</td></tr>
+        <tr><td><span class="grade grade-b">CALIDAD B</span></td><td>Uso visible, pequeñas taras reparables. Precio por kilo muy bajo.</td><td>Venta a granel, reciclaje textil y upcycling.</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="faq" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="band-head"><h2>Preguntas frecuentes</h2></div>
+    <div class="faq">
+      <details><summary>¿Puedo elegir las prendas de un lote?</summary><p>No. Los lotes se preparan cerrados por categoría y calidad. Lo que sí garantizamos es el peso, el número aproximado de prendas y la calidad indicada.</p></details>
+      <details><summary>¿Cuánto cuesta el envío?</summary><p>15 € por pedido en península. Gratis a partir de 300 €. Para Baleares y Canarias te damos presupuesto antes de enviar.</p></details>
+      <details><summary>¿Hacéis factura para empresas?</summary><p>Sí. Indica tu CIF o NIF al hacer el pedido y la recibirás por correo con el envío.</p></details>
+      <details><summary>¿Y si el lote no coincide con la descripción?</summary><p>Tienes 7 días para avisarnos con fotos. Si la calidad no corresponde, te devolvemos la diferencia o cambiamos el lote.</p></details>
+      <details><summary>¿Puedo visitar el almacén?</summary><p>Sí, con cita previa de lunes a viernes. Escríbenos y te damos hora.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <div>
+      <h2>¿Buscas volumen o algo concreto?</h2>
+      <p>Para pedidos de más de 200 kg o lotes a medida (solo vaqueros, solo abrigos, marcas concretas) te preparamos presupuesto personalizado.</p>
+    </div>
+    <div class="contact-lines">
+      <div class="cline"><span><span class="label" style="color:inherit;opacity:.7">Correo</span><br><span id="mail">pedidos@fardo-lotes.es</span></span><button class="copy" type="button" data-copy="mail">Copiar</button></div>
+      <div class="cline"><span><span class="label" style="color:inherit;opacity:.7">WhatsApp</span><br><span id="tel">+34 600 000 000</span></span><button class="copy" type="button" data-copy="tel">Copiar</button></div>
+      <div class="cline"><span><span class="label" style="color:inherit;opacity:.7">Horario</span><br>L–V · 9:00 a 18:00</span></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Fardo · Lotes de ropa al por mayor</span><span>Datos de contacto y precios de ejemplo</span></div></footer>
+
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" hidden aria-label="Carrito" role="dialog" aria-modal="true">
+  <div class="drawer-head"><h2 id="drawerTitle">Tu carrito</h2><button class="x" id="closeCart" type="button" aria-label="Cerrar">×</button></div>
+  <div id="drawerBody" style="display:flex;flex-direction:column;flex:1;min-height:0;gap:12px"></div>
+</aside>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+const LOTS=[
+ {id:"L0412",name:"Mix temporada",cat:"Mixto",grade:"A",kg:25,pcs:95,price:189,stock:7,feat:1,desc:"Mujer, hombre e infantil. Camisetas, pantalones, sudaderas y vestidos.",colors:["#2B44E0","#E7A33E","#4E9A6E","#C9435B","#8C8FA3","#1F2A44","#E7D9C4"]},
+ {id:"L0418",name:"Vaqueros de marca",cat:"Hombre",grade:"Crema",kg:15,pcs:28,price:245,stock:3,feat:2,desc:"Levi's, Lee y Wrangler. Tallas 30 a 36, cortes recto y slim.",colors:["#2D4E7A","#3C6597","#1F3456","#5B7FAF","#273F63","#476C9C"]},
+ {id:"L0421",name:"Mujer primavera",cat:"Mujer",grade:"A",kg:20,pcs:110,price:210,stock:5,feat:3,desc:"Blusas, faldas, vestidos y punto fino. Tallas XS a XL.",colors:["#E9A3B2","#F3D27A","#9BC7A9","#FFFFFF","#C9B8E8","#E77E6B","#A7C6E3"]},
+ {id:"L0425",name:"Abrigos y chaquetas",cat:"Invierno",grade:"A",kg:30,pcs:42,price:285,stock:4,feat:4,desc:"Plumíferos, parkas, abrigos de paño y cazadoras. Mixto adulto.",colors:["#3A3F4B","#6B4F3A","#1E2B3A","#7A2F2F","#4D5A44","#2B2B2B"]},
+ {id:"L0430",name:"Infantil 0–12",cat:"Infantil",grade:"A",kg:15,pcs:120,price:150,stock:9,feat:5,desc:"Bodies, pijamas, camisetas y conjuntos. Separado por edades.",colors:["#FFD23F","#7FC8F8","#F49CBB","#9AE19D","#FF9F68","#B8B8FF"]},
+ {id:"L0433",name:"Vintage 80s–90s",cat:"Vintage",grade:"Crema",kg:10,pcs:30,price:260,stock:2,feat:6,desc:"Chaquetas de chándal, camisas estampadas y sudaderas universitarias.",colors:["#7A1F5C","#1AA7A1","#F2B134","#3C2A73","#E4572E","#2E86AB"]},
+ {id:"L0437",name:"Deporte y outdoor",cat:"Deporte",grade:"A",kg:20,pcs:80,price:198,stock:6,feat:7,desc:"Mallas, cortavientos, camisetas técnicas y sudaderas de marca deportiva.",colors:["#111827","#E11D48","#0EA5E9","#F5F5F5","#22C55E","#6366F1"]},
+ {id:"L0440",name:"Granel económico",cat:"Mixto",grade:"B",kg:50,pcs:190,price:120,stock:12,feat:8,desc:"Ropa variada con uso visible. Para venta a peso o reciclaje.",colors:["#8C8FA3","#A68A64","#5D6B5A","#B5A6A0","#6E6A86","#9C7B6B","#79838F"]},
+ {id:"L0444",name:"Hombre básico",cat:"Hombre",grade:"A",kg:20,pcs:85,price:175,stock:8,feat:9,desc:"Polos, camisas, chinos y jerséis. Tallas S a XXL.",colors:["#1F2A44","#FFFFFF","#7A8B99","#3E5C3A","#C2B280","#8B1E3F"]},
+ {id:"L0447",name:"Mujer invierno",cat:"Invierno",grade:"Crema",kg:15,pcs:40,price:230,stock:1,feat:10,desc:"Jerséis de lana, cárdigans y abrigos largos. Muchas con etiqueta.",colors:["#C9B8A6","#7A5C4D","#E8E1D6","#5A5A5A","#A33B3B","#355C7D"]},
+ {id:"L0451",name:"Bolsos y accesorios",cat:"Mixto",grade:"A",kg:10,pcs:45,price:140,stock:5,feat:11,desc:"Bolsos, cinturones, pañuelos y gorros. Sin calzado.",colors:["#6B3E26","#1C1C1C","#C08552","#E3C5A1","#8E2C48"]},
+ {id:"L0455",name:"Upcycling textil",cat:"Mixto",grade:"B",kg:40,pcs:150,price:80,stock:10,feat:12,desc:"Tejidos con taras para costura, patchwork o relleno.",colors:["#A0A4B8","#C2A878","#7E8C69","#B07D62","#6D7A8C","#9D8F86"]}
+];
+const CATS=["Todos",...new Set(LOTS.map(l=>l.cat))];
+const SHIP=15, FREE=300;
+const eur=n=>n.toLocaleString("es-ES",{style:"currency",currency:"EUR",minimumFractionDigits:n%1?2:0,maximumFractionDigits:2});
+const $=s=>document.querySelector(s);
+
+let cat="Todos", sort="dest", cart={}, step="cart";
+try{cart=JSON.parse(localStorage.getItem("fardo-cart")||"{}")||{}}catch(e){cart={}}
+const save=()=>{try{localStorage.setItem("fardo-cart",JSON.stringify(cart))}catch(e){}};
+
+function stackHTML(colors,n){let h="";for(let i=0;i<n;i++)h+=`<span style="background:${colors[i%colors.length]}"></span>`;return `<div class="stack">${h}</div>`}
+$("#heroStack").outerHTML=stackHTML(LOTS[0].colors.concat(["#FFD23F","#2B44E0"]),11);
+
+function renderFilters(){
+  $("#filters").innerHTML=CATS.map(c=>`<button type="button" class="chip" aria-pressed="${c===cat}" data-cat="${c}">${c}</button>`).join("");
+}
+function gradeClass(g){return g==="Crema"?"grade-crema":g==="A"?"grade-a":"grade-b"}
+function renderGrid(){
+  let list=LOTS.filter(l=>cat==="Todos"||l.cat===cat);
+  const by={dest:(a,b)=>a.feat-b.feat,"precio-asc":(a,b)=>a.price-b.price,"precio-desc":(a,b)=>b.price-a.price,prenda:(a,b)=>a.price/a.pcs-b.price/b.pcs,kg:(a,b)=>b.kg-a.kg};
+  list.sort(by[sort]);
+  $("#resultCount").textContent=`${list.length} ${list.length===1?"lote":"lotes"}`;
+  $("#grid").innerHTML=list.length?list.map(l=>{
+    const inCart=cart[l.id]||0, left=l.stock-inCart;
+    return `<article class="lot">
+      <div class="lot-top"><span class="label mono">${l.id} · ${l.cat}</span><span class="grade ${gradeClass(l.grade)}">${l.grade==="Crema"?"CREMA":"CALIDAD "+l.grade}</span></div>
+      ${stackHTML(l.colors,Math.min(9,Math.max(4,Math.round(l.kg/5))))}
+      <div><h3>${l.name}</h3><p>${l.desc}</p></div>
+      <div class="specs">
+        <div><span class="label">Peso</span><b>${l.kg} kg</b></div>
+        <div><span class="label">Prendas</span><b>≈ ${l.pcs}</b></div>
+        <div><span class="label">€/kg</span><b>${(l.price/l.kg).toFixed(2).replace(".",",")}</b></div>
+      </div>
+      <div class="lot-foot">
+        <div class="price">${eur(l.price)}<small>${(l.price/l.pcs).toFixed(2).replace(".",",")} € por prenda</small></div>
+        <button type="button" class="add" data-add="${l.id}" ${left<=0?"disabled":""}>${left<=0?"Agotado":"Añadir"}</button>
+      </div>
+      <span class="stock ${left<=2?"low":""}">${left<=0?"Sin unidades disponibles":left===1?"Queda 1 fardo":`Quedan ${left} fardos`}</span>
+    </article>`}).join(""):`<div class="empty">No hay lotes en esta categoría ahora mismo.</div>`;
+}
+function count(){return Object.values(cart).reduce((a,b)=>a+b,0)}
+function totals(){
+  const sub=Object.entries(cart).reduce((s,[id,q])=>s+LOTS.find(l=>l.id===id).price*q,0);
+  const ship=sub===0||sub>=FREE?0:SHIP;
+  const kg=Object.entries(cart).reduce((s,[id,q])=>s+LOTS.find(l=>l.id===id).kg*q,0);
+  return {sub,ship,total:sub+ship,kg};
+}
+function renderCart(){
+  $("#cartCount").textContent=count();
+  const body=$("#drawerBody");
+  if(step==="done") return;
+  const t=totals();
+  if(!count()){body.innerHTML=`<div class="done"><div class="stack" style="max-width:140px;margin:0 auto 18px;opacity:.5"><span style="background:var(--line)"></span><span style="background:var(--line)"></span><span style="background:var(--line)"></span></div><p style="color:var(--muted)">Tu carrito está vacío.</p><button class="btn btn-primary" type="button" id="goShop">Ver lotes</button></div>`;return}
+  const items=Object.entries(cart).map(([id,q])=>{const l=LOTS.find(x=>x.id===id);return `<div class="item">
+    ${stackHTML(l.colors,5)}
+    <div style="min-width:0"><h4>${l.name}</h4><span class="label mono">${l.id} · ${l.kg} kg</span>
+      <div class="qty"><button type="button" data-dec="${id}" aria-label="Quitar uno">−</button><span class="mono">${q}</span><button type="button" data-inc="${id}" aria-label="Añadir uno" ${q>=l.stock?"disabled":""}>+</button><button type="button" class="rm" data-rm="${id}">Eliminar</button></div></div>
+    <b class="mono">${eur(l.price*q)}</b></div>`}).join("");
+  const pct=Math.min(100,t.sub/FREE*100);
+  const shipInfo=t.sub>=FREE?`<span class="ship-note" style="color:var(--ok)">Envío gratis aplicado</span>`:`<span class="ship-note">Te faltan ${eur(FREE-t.sub)} para el envío gratis</span>`;
+  const totalsHTML=`<div class="totals">
+      <div><span>Subtotal (${t.kg} kg)</span><span class="mono">${eur(t.sub)}</span></div>
+      <div><span>Envío península</span><span class="mono">${t.ship?eur(t.ship):"Gratis"}</span></div>
+      <div class="ship-bar"><i style="width:${pct}%"></i></div>${shipInfo}
+      <div class="grand"><span>Total</span><span>${eur(t.total)}</span></div>
+      <span class="ship-note">IVA incluido</span></div>`;
+  if(step==="cart"){
+    body.innerHTML=`<div class="items">${items}</div>${totalsHTML}<button class="btn btn-primary" type="button" id="toCheckout" style="justify-content:center">Continuar con el pedido</button>`;
+  } else {
+    body.innerHTML=`<div class="items"><form class="checkout" id="checkoutForm" novalidate>
+      <label>Nombre o empresa<input id="f-name" required autocomplete="name"></label>
+      <div class="row2"><label>NIF / CIF (opcional)<input id="f-nif"></label><label>Teléfono<input id="f-tel" required type="tel" autocomplete="tel"></label></div>
+      <label>Correo electrónico<input id="f-mail" required type="email" autocomplete="email"></label>
+      <label>Dirección<input id="f-addr" required autocomplete="street-address"></label>
+      <div class="row2"><label>Código postal<input id="f-cp" required inputmode="numeric" pattern="[0-9]{5}" autocomplete="postal-code"></label><label>Provincia<input id="f-prov" required></label></div>
+      <label>Forma de pago<select id="f-pay"><option>Transferencia bancaria</option><option>Bizum</option><option>Pago contra reembolso (+5 €)</option></select></label>
+      <p class="ship-note" id="formErr" style="color:#C4442A" hidden></p>
+    </form></div>${totalsHTML}
+    <div class="row2"><button class="btn btn-ghost" type="button" id="backCart" style="justify-content:center">Volver</button><button class="btn btn-primary" type="submit" form="checkoutForm" style="justify-content:center">Confirmar pedido</button></div>`;
+  }
+}
+function openCart(){step="cart";renderCart();$("#scrim").hidden=false;$("#drawer").hidden=false;$("#closeCart").focus()}
+function closeCart(){$("#scrim").hidden=true;$("#drawer").hidden=true;if(step==="done"){step="cart";renderCart()}}
+let tt;function toast(m){const t=$("#toast");t.textContent=m;t.hidden=false;clearTimeout(tt);tt=setTimeout(()=>t.hidden=true,2200)}
+
+document.addEventListener("click",e=>{
+  const b=e.target.closest("button");if(!b)return;
+  if(b.dataset.cat){cat=b.dataset.cat;renderFilters();renderGrid()}
+  else if(b.dataset.add){const l=LOTS.find(x=>x.id===b.dataset.add);cart[l.id]=(cart[l.id]||0)+1;save();renderGrid();renderCart();toast(`${l.name} añadido al carrito`)}
+  else if(b.dataset.inc){cart[b.dataset.inc]++;save();renderCart();renderGrid()}
+  else if(b.dataset.dec){if(--cart[b.dataset.dec]<=0)delete cart[b.dataset.dec];save();renderCart();renderGrid()}
+  else if(b.dataset.rm){delete cart[b.dataset.rm];save();renderCart();renderGrid()}
+  else if(b.dataset.copy){const txt=$("#"+b.dataset.copy).textContent;
+    const ok=()=>{b.textContent="Copiado";setTimeout(()=>b.textContent="Copiar",1500)};
+    const fallback=()=>{const r=document.createRange();r.selectNodeContents($("#"+b.dataset.copy));const s=getSelection();s.removeAllRanges();s.addRange(r)};
+    try{navigator.clipboard.writeText(txt).then(ok,fallback)}catch(err){fallback()}}
+  else if(b.id==="openCart")openCart();
+  else if(b.id==="closeCart")closeCart();
+  else if(b.id==="goShop"){closeCart();location.hash="#lotes";$("#lotes").scrollIntoView()}
+  else if(b.id==="toCheckout"){step="checkout";renderCart()}
+  else if(b.id==="backCart"){step="cart";renderCart()}
+});
+document.addEventListener("submit",e=>{
+  if(e.target.id!=="checkoutForm")return;e.preventDefault();
+  const f=e.target, err=$("#formErr");
+  if(!f.checkValidity()){const bad=f.querySelector(":invalid");err.textContent=bad.id==="f-cp"?"El código postal debe tener 5 cifras.":bad.type==="email"?"Revisa el correo electrónico.":"Rellena los campos obligatorios.";err.hidden=false;bad.focus();return}
+  const t=totals(), ref="FD-"+Math.random().toString(36).slice(2,8).toUpperCase(), pay=$("#f-pay").value, name=$("#f-name").value.trim().split(" ")[0];
+  const extra=pay.includes("reembolso")?5:0;
+  step="done";cart={};save();renderGrid();$("#cartCount").textContent=0;
+  $("#drawerBody").innerHTML=`<div class="done"><h3>Pedido registrado</h3><p>Gracias, ${name.replace(/[<>&]/g,"")}. Este es el número de tu pedido:</p><span class="ref">${ref}</span>
+    <p style="color:var(--muted)">Total: <b class="mono" style="color:var(--ink)">${eur(t.total+extra)}</b> · ${t.kg} kg<br>Forma de pago: ${pay}</p>
+    <p class="ship-note">Esta tienda es una demostración: el pedido no se ha enviado a ningún sitio.</p>
+    <button class="btn btn-primary" type="button" id="closeCart">Seguir comprando</button></div>`;
+});
+$("#scrim").addEventListener("click",closeCart);
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("#drawer").hidden)closeCart()});
+$("#sortSel").addEventListener("change",e=>{sort=e.target.value;renderGrid()});
+renderFilters();renderGrid();renderCart();
+</script>
+
+</body>
+</html>
